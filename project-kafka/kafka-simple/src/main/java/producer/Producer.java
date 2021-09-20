@@ -34,9 +34,12 @@ public class Producer {
         for (int i = 0; i < msgNum; i++) {
             OrderVo orderVo = OrderVo.builder().orderId(new Snowflake().nextId()).amount(new BigDecimal(i * 100)).build();
             ProducerRecord<String, String> record = new ProducerRecord<>(TOPIC_NAME, 1, String.valueOf(orderVo.getOrderId()), JSONObject.toJSONString(orderVo));
+            // 异步发送消息
             producer.send(record, CALL_BACK);
-//            RecordMetadata metadata = producer.send(record).get();
-//            System.out.println("同步方式发送消息结果：" + "topic-" + metadata.topic() + "|partition-" + metadata.partition() + "|offset-" + metadata.offset());
+
+            /*// 同步发送消息
+            RecordMetadata metadata = producer.send(record).get();
+            System.out.println("同步方式发送消息结果：" + "topic-" + metadata.topic() + "|partition-" + metadata.partition() + "|offset-" + metadata.offset());*/
         }
 
         producer.close();
