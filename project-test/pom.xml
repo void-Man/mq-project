@@ -9,11 +9,11 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>project-rabbitmq</artifactId>
-    <packaging>pom</packaging>
-    <modules>
-        <module>rabbitmq-simple</module>
-    </modules>
+    <artifactId>project-test</artifactId>
 
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+    </properties>
 
 </project>
